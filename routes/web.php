@@ -29,6 +29,12 @@ Route::post('/point', function (Request $request) {
     $validator = Validator::make($request->all(), [
         'memo' => 'max:255',
     ]);
+
+    if ($validator->fails()) {
+        return redirect('/')
+            ->withInput()
+            ->withErrors($validator);
+    }
 });
 
 /**
