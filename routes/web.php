@@ -11,7 +11,7 @@
 |
 */
 
-use App\Task;
+use App\Point;
 use Illuminate\Http\Request;
 
 /**
@@ -35,6 +35,16 @@ Route::post('/point', function (Request $request) {
             ->withInput()
             ->withErrors($validator);
     }
+
+    $point = new Point();
+    $point->memo = $request->memo;
+    $point->one = $request->one;
+    $point->two = $request->two;
+    $point->three = $request->three;
+    $point->four = $request->four;
+    $point->save();
+
+    return redirect('/');
 });
 
 /**

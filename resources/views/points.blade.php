@@ -22,16 +22,28 @@
                             <label for="points" class="col-sm-3 control-label">的中記録</label>
 
                             <div class="col-sm-6">
-                                <label class="checkbox-inline"><input type="checkbox" value="one">1射目</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="two">2射目</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="three">3射目</label>
-                                <label class="checkbox-inline"><input type="checkbox" value="four">4射目</label>
+                                <label class="checkbox-inline">
+                                    <input type="hidden" name="one" value="0">
+                                    <input type="checkbox" name="one" value="1">1射目
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="hidden" name="two" value="0">
+                                    <input type="checkbox" name="two" value="1">2射目
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="hidden" name="three" value="0">
+                                    <input type="checkbox" name="three" value="1">3射目
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="hidden" name="four" value="0">
+                                    <input type="checkbox" name="four" value="1">4射目
+                                </label>
                             </div>
 
                             <label for="point-memo" class="col-sm-3 control-label">メモ</label>
 
                             <div class="col-sm-6">
-                                <input type="text" name="name" id="memo" class="form-control" value="{{ old('memo') }}">
+                                <input type="text" id="memo" name="memo" class="form-control" value="{{ old('memo') }}">
                             </div>
                         </div>
 
