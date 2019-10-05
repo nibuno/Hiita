@@ -16,9 +16,8 @@
                     <form action="{{ url('point')}}" method="POST" class="form-horizontal">
                         @csrf
 
-                        <!-- 的中名 -->
-                        <div class="form-group">
-
+                        <!-- 的中の記録 -->
+                        <div class="form-check">
                             <label for="points" class="col-sm-3 control-label">的中記録</label>
 
                             <div class="col-sm-6">
@@ -39,7 +38,10 @@
                                     <input type="checkbox" name="four" value="1">4射目
                                 </label>
                             </div>
+                        </div>
 
+                        <!-- メモ -->
+                        <div class="group">
                             <label for="point-memo" class="col-sm-3 control-label">メモ</label>
 
                             <div class="col-sm-6">
@@ -47,13 +49,11 @@
                             </div>
                         </div>
 
-                        <!-- 的中記録ボタン -->
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-btn fa-plus"></i> 的中を記録する
-                                </button>
-                            </div>
+                        <!-- 的中記録送信ボタン -->
+                        <div class="col-sm-offset-3 col-sm-6">
+                            <button type="submit" class="btn btn-default">
+                                <i class="fa fa-btn fa-plus"></i> 的中を記録する
+                            </button>
                         </div>
                     </form>
                 </div>
