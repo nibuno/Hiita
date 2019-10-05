@@ -26,7 +26,9 @@ Route::get('/', function () {
  * 的中追加
  */
 Route::post('/point', function (Request $request) {
-    //
+    $validator = Validator::make($request->all(), [
+        'memo' => 'max:255',
+    ]);
 });
 
 /**
