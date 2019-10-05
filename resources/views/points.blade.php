@@ -60,6 +60,56 @@
             </div>
 
             <!-- TODO: 現在の的中の表示 -->
+            @if (count($points) > 0)
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        現在の的中記録
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped task-table">
+                            <!-- テーブルヘッダ -->
+                            <thead>
+                                <tr>
+                                    <th>立数</th>
+                                    <th>1射目</th>
+                                    <th>2射目</th>
+                                    <th>3射目</th>
+                                    <th>4射目</th>
+                                    <th>メモ</th>
+                                </tr>
+                            </thead>
+                            <!-- テーブル本体 -->
+                            <tbody>
+                                @foreach ($points as $point)
+                                    <tr>
+                                        <td class="table-text">
+                                            <div></div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->one }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->two }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->three }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->four }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->memo }}</div>
+                                        </td>
+                                        <!-- TODO: 削除ボタン -->
+                                        <td>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection

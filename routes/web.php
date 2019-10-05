@@ -19,7 +19,11 @@ use Illuminate\Http\Request;
  */
 
 Route::get('/', function () {
-    return view('points');
+    $points = Point::orderBy('created_at', 'asc')->get();
+
+    return view('points', [
+        'points' => $points
+    ]);
 });
 
 /**
