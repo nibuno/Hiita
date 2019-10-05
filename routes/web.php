@@ -61,3 +61,6 @@ Route::post('/point', function (Request $request) {
 Route::delete('point/{point}', function (Point $point) {
     //
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
