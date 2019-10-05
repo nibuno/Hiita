@@ -27,7 +27,7 @@
       <div class="navbar-header">
         <!-- Hiita Image -->
         <a class="navbar-brand" href="{{ url('/') }}">
-          的中表
+          Hiita
         </a>
       </div>
     </div>
