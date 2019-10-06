@@ -24,29 +24,11 @@ Route::get('/', 'PointController@index');
 /**
  * 的中追加
  */
-Route::post('/point', function (Request $request) {
-    $validator = Validator::make($request->all(), [
-        'memo' => 'max:255',
-    ]);
+Route::post('/point', 'PointController@post');
 
-    if ($validator->fails()) {
-        return redirect('/')
-            ->withInput()
-            ->withErrors($validator);
-    }
+// Route::post('/point', function (Request $request) {
 
-    $point = new Point();
-
-    $point->memo  = $request->memo;
-    $point->one   = $request->one;
-    $point->two   = $request->two;
-    $point->three = $request->three;
-    $point->four  = $request->four;
-
-    $point->save();
-
-    return redirect('/');
-});
+// });
 
 /**
  * 的中編集
