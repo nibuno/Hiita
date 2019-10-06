@@ -59,7 +59,7 @@
                 </div>
             </div>
 
-            <!-- TODO: 現在の的中の表示 -->
+            <!-- 現在の的中の表示 -->
             @if (count($points) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -76,6 +76,8 @@
                                     <th>3射目</th>
                                     <th>4射目</th>
                                     <th>メモ</th>
+                                    <th>ID</th>
+                                    <th>日時</th>
                                 </tr>
                             </thead>
                             <!-- テーブル本体 -->
@@ -99,6 +101,12 @@
                                         </td>
                                         <td class="table-text">
                                             <div>{{ $point->memo }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->user_id }}</div>
+                                        </td>
+                                        <td class="table-text">
+                                            <div>{{ $point->created_at }}</div>
                                         </td>
                                         <!-- TODO: 削除ボタン -->
                                         <td>
