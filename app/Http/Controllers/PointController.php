@@ -5,14 +5,19 @@ namespace App\Http\Controllers;
 use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 
 class PointController extends Controller
 {
     public function index() 
     {
-        $points = Point::orderBy('created_at', 'desc')->get();
-
         $user = Auth::user();
+
+        $points = DB::table('points')
+                        ->orderBy('created_at', 'desc')
+                        ->whereRaw("user_id = $user->id")
+                        ->get();
         
         return view('points', [
             'points' => $points,
