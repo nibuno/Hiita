@@ -12,11 +12,15 @@ class PointController extends Controller
 {
     public function index() 
     {
+        $today = date('Y-m-d');
+
         $user = Auth::user();
 
         $points = DB::table('points')
                         ->orderBy('created_at', 'desc')
                         ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
                         ->get();
         
         return view('points', [
