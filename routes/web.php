@@ -13,18 +13,13 @@
 
 use App\Point;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * 的中表示
  */
 
-Route::get('/', function () {
-    $points = Point::orderBy('created_at', 'asc')->get();
-
-    return view('points', [
-        'points' => $points
-    ]);
-});
+Route::get('/', 'PointController@index');
 
 /**
  * 的中追加
@@ -41,11 +36,13 @@ Route::post('/point', function (Request $request) {
     }
 
     $point = new Point();
-    $point->memo = $request->memo;
-    $point->one = $request->one;
-    $point->two = $request->two;
+
+    $point->memo  = $request->memo;
+    $point->one   = $request->one;
+    $point->two   = $request->two;
     $point->three = $request->three;
-    $point->four = $request->four;
+    $point->four  = $request->four;
+
     $point->save();
 
     return redirect('/');
