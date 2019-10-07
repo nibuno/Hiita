@@ -70,23 +70,17 @@
                             <!-- テーブルヘッダ -->
                             <thead>
                                 <tr>
-                                    <th>立数</th>
                                     <th>1射目</th>
                                     <th>2射目</th>
                                     <th>3射目</th>
                                     <th>4射目</th>
                                     <th>メモ</th>
-                                    <th>ID</th>
-                                    <th>日時</th>
                                 </tr>
                             </thead>
                             <!-- テーブル本体 -->
                             <tbody>
                                 @foreach ($points as $point)
                                     <tr>
-                                        <td class="table-text">
-                                            <div></div>
-                                        </td>
                                         <td class="table-text">
                                             <div>{{ $point->one }}</div>
                                         </td>
@@ -101,12 +95,6 @@
                                         </td>
                                         <td class="table-text">
                                             <div>{{ $point->memo }}</div>
-                                        </td>
-                                        <td class="table-text">
-                                            <div>{{ $point->user_id }}</div>
-                                        </td>
-                                        <td class="table-text">
-                                            <div>{{ $point->created_at }}</div>
                                         </td>
                                         <!-- TODO: 削除ボタン -->
                                         <td>
