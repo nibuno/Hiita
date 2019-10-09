@@ -16,10 +16,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 /**
+ * TOPページ
+ */
+Route::get('/', 'LandingController@index');
+
+/**
  * 的中表示
  */
 
-Route::get('/', 'PointController@index');
+Route::get('/dashboard', 'PointController@index');
 
 /**
  * 的中追加
