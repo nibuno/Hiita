@@ -94,6 +94,6 @@ class PointController extends Controller
     
         $point->save();
     
-        return redirect('/');
+        return redirect('/dashboard');
     }
 }
