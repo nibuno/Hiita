@@ -17,15 +17,55 @@ class PointController extends Controller
         $user = Auth::user();
 
         $points = DB::table('points')
-                        ->orderBy('created_at', 'desc')
-                        ->whereRaw("user_id = $user->id")
+                        ->orderBy('created_at', 'asc')
+                        // ->whereRaw("user_id = $user->id")
                         ->whereDate('created_at', '=', "$today")
                         ->whereDate('updated_at', '=', "$today")
                         ->get();
+
+        $issyame = DB::table('points')
+                        ->orderBy('created_at', 'desc')
+                        // ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
+                        ->sum('one');
+
+                        $nissyame = DB::table('points')
+                        ->orderBy('created_at', 'desc')
+                        // ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
+                        ->sum('two');
+
+                        $sanssyame = DB::table('points')
+                        ->orderBy('created_at', 'desc')
+                        // ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
+                        ->sum('three');
+
+                        $yonssyame = DB::table('points')
+                        ->orderBy('created_at', 'desc')
+                        // ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
+                        ->sum('four');
+
+        $yakazu = DB::table('points')
+                        ->orderBy('created_at', 'asc')
+                        // ->whereRaw("user_id = $user->id")
+                        ->whereDate('created_at', '=', "$today")
+                        ->whereDate('updated_at', '=', "$today")
+                        ->count() * 4;
         
         return view('points', [
             'points' => $points,
-            'user' => $user
+            'user' => $user,
+            'issyame' => $issyame,
+            'nissyame' => $nissyame,
+            'sanssyame' => $sanssyame,
+            'yonssyame' => $yonssyame,
+            'yakazu' => $yakazu,
         ]);
     }
 

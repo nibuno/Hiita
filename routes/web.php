@@ -24,7 +24,7 @@ Route::get('/', 'LandingController@index');
  * 的中表示
  */
 
-Route::get('/dashboard', 'PointController@index');
+Route::get('/dashboard', 'PointController@index')->middleware('auth');
 
 /**
  * 的中追加
