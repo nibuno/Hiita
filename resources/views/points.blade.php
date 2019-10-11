@@ -82,16 +82,32 @@
                                 @foreach ($points as $point)
                                     <tr>
                                         <td class="table-text">
-                                            <div>{{ $point->one }}</div>
+                                            @if ( $point->one === 1 )
+                                                <div>◯</div>
+                                            @else 
+                                                <div>×</div>
+                                            @endif
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $point->two }}</div>
+                                            @if ( $point->two === 1 )
+                                                <div>◯</div>
+                                            @else 
+                                                <div>×</div>
+                                            @endif
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $point->three }}</div>
+                                            @if ( $point->three === 1 )
+                                                <div>◯</div>
+                                            @else 
+                                                <div>×</div>
+                                            @endif
                                         </td>
                                         <td class="table-text">
-                                            <div>{{ $point->four }}</div>
+                                            @if ( $point->four === 1 )
+                                                <div>◯</div>
+                                            @else 
+                                                <div>×</div>
+                                            @endif
                                         </td>
                                         <td class="table-text">
                                             <div>{{ $point->memo }}</div>
