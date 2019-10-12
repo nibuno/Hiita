@@ -40,11 +40,15 @@ Route::post('/point', 'PointController@post');
  */
 
 /**
- * 的中削除
+ * 的中削除　TODO: Controllerへの移行
  */
-Route::delete('point/{point}', function (Point $point) {
-    //
+Route::delete('/point/{point}', function (Point $point) {
+    $point->delete();
+
+    return redirect('/dashboard');
 });
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

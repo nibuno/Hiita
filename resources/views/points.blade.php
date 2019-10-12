@@ -103,7 +103,16 @@
                                             </td>
                                             <!-- TODO: 削除ボタン -->
                                             <td>
+                                                <form action="{{ url('point/' . $point->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="fa fa-btn fa-trash"></i> 削除
+                                                    </button>
+                                                </form>
                                             </td>
+                                            
                                         </tr>
                                     @endforeach
                                 </tbody>
