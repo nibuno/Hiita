@@ -4,10 +4,6 @@
     <div class="container">
         <div class="col-sm-offset-2">
             <div class="card card-default">
-                <div class="card-header">
-                    的中の追加
-                </div>
-
                 <div class="card-body">
                     <!-- バリデーションエラーの表示 -->
                     @include('common.errors')
@@ -18,9 +14,7 @@
 
                         <!-- 的中の記録 -->
                         <div class="form-check">
-                            <label for="points" class="control-label">的中記録</label>
-
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <label class="checkbox-inline">
                                     <input type="hidden" name="one" value="0">
                                     <input type="checkbox" name="one" value="1">1射目
@@ -42,10 +36,9 @@
 
                         <!-- メモ -->
                         <div class="group">
-                            <label for="point-memo" class="col-sm-3 control-label">メモ</label>
-
                             <div class="col-sm-6">
-                                <input type="text" id="memo" name="memo" class="form-control" value="{{ old('memo') }}">
+                                <input type="text" id="memo" name="memo" class="form-control" 
+                                placeholder="気になったことなどメモしよう" value="{{ old('memo') }}">
                             </div>
                         </div>
 
@@ -70,17 +63,6 @@
                     <div class="card-body table-responsive-sm">
                         <div class="table-responsive-sm">
                             <table class="table table-striped table-sm text-center text-nowrap">
-                                <!-- テーブルヘッダ -->
-                                <thead>
-                                    <tr>
-                                        <th>立</th>
-                                        <th>1射目</th>
-                                        <th>2射目</th>
-                                        <th>3射目</th>
-                                        <th>4射目</th>
-                                        <th>メモ</th>
-                                    </tr>
-                                </thead>
                                 <!-- テーブル本体 -->
                                 <tbody>
                                     @foreach ($points as $point)
