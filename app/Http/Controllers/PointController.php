@@ -23,8 +23,45 @@ class PointController extends Controller
                         ->whereDate('updated_at', '=', "$today")
                         ->get();
 
+        $totalPointsOfOne = DB::table('points')
+                                ->whereRaw("user_id = $user->id")
+                                ->whereDate('created_at', '=', "$today")
+                                ->whereDate('updated_at', '=', "$today")
+                                ->sum('one');
+
+        $totalPointsOfTwo = DB::table('points')
+                                ->whereRaw("user_id = $user->id")
+                                ->whereDate('created_at', '=', "$today")
+                                ->whereDate('updated_at', '=', "$today")
+                                ->sum('two');
+
+        $totalPointsOfThree = DB::table('points')
+                                ->whereRaw("user_id = $user->id")
+                                ->whereDate('created_at', '=', "$today")
+                                ->whereDate('updated_at', '=', "$today")
+                                ->sum('three');
+        
+        $totalPointsOfFour = DB::table('points')
+                                ->whereRaw("user_id = $user->id")
+                                ->whereDate('created_at', '=', "$today")
+                                ->whereDate('updated_at', '=', "$today")
+                                ->sum('four');
+
+        $todayTotalPoints = $totalPointsOfOne + $totalPointsOfTwo + $totalPointsOfThree + $totalPointsOfFour;
+
+        $todayShootsNumbers = DB::table('points')
+                                ->whereRaw("user_id = $user->id")
+                                ->whereDate('created_at', '=', "$today")
+                                ->whereDate('updated_at', '=', "$today")
+                                ->count() * 4;
+
+        $hitPointsPercentage = round(($todayTotalPoints / $todayShootsNumbers) * 100, 2);
+        
         return view('points', [
             'points' => $points,
+            'todayTotalPoints' => $todayTotalPoints,
+            'todayShootsNumbers' => $todayShootsNumbers,
+            'hitPointsPercentage' => $hitPointsPercentage,
             'user' => $user
         ]);
     }

@@ -63,7 +63,7 @@
             @if (count($points) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        現在の的中記録
+                        今日の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
                     </div>
                     <div class="panel-body">
                         <table class="table table-striped task-table">
