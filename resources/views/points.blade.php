@@ -68,6 +68,7 @@
                     </div>
                         
                     <div class="card-body table-responsive-sm">
+                        <!-- TODO: レスポンシブテーブルが動くように -->
                         <div class="table-responsive-sm">
                             <table class="table table-striped table-sm text-center">
                                 <!-- テーブルヘッダ -->
