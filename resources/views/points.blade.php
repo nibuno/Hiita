@@ -73,6 +73,7 @@
                                 <!-- テーブルヘッダ -->
                                 <thead>
                                     <tr>
+                                        <th>立</th>
                                         <th>1射目</th>
                                         <th>2射目</th>
                                         <th>3射目</th>
@@ -84,6 +85,9 @@
                                 <tbody>
                                     @foreach ($points as $point)
                                         <tr>
+                                            <td class="table-text">
+                                                <div>{{ $loop->index + 1}}</div>
+                                            </td>
                                             <td class="table-text">
                                                 @if ( $point->one === 1 )
                                                     <div>◯</div>
