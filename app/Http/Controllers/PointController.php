@@ -55,8 +55,13 @@ class PointController extends Controller
                                 ->whereDate('updated_at', '=', "$today")
                                 ->count() * 4;
 
-        $hitPointsPercentage = round(($todayTotalPoints / $todayShootsNumbers) * 100, 2);
-        
+        // 練習していない場合 Division by zero Error が起こるので回避するため
+        if ($todayShootsNumbers === 0) {
+            $hitPointsPercentage = 0;
+        } else {
+            $hitPointsPercentage = round(($todayTotalPoints / $todayShootsNumbers) * 100, 2);
+        }
+
         return view('points', [
             'points' => $points,
             'todayTotalPoints' => $todayTotalPoints,
