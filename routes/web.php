@@ -31,13 +31,15 @@ Route::get('/dashboard', 'PointController@index')->middleware('auth');
  */
 Route::post('/point', 'PointController@post');
 
-// Route::post('/point', function (Request $request) {
-
-// });
+/**
+ * 的中編集画面
+ */
+Route::get('edit/{id}', 'PointController@edit');
 
 /**
- * 的中編集
+ * 的中更新
  */
+Route::post('/update/{point}', 'PointController@update');
 
 /**
  * 的中削除　TODO: Controllerへの移行

@@ -101,7 +101,11 @@
                                             <td class="table-text">
                                                 <div>{{ $point->memo }}</div>
                                             </td>
-                                            <!-- TODO: 削除ボタン -->
+                                            <td>
+                                                <a class="btn btn-primary" href="{{ url('edit/' . $point->id) }}"> 
+                                                    編集
+                                                </a>
+                                            </td>
                                             <td>
                                                 <form action="{{ url('point/' . $point->id) }}" method="POST">
                                                     @csrf

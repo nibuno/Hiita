@@ -98,4 +98,39 @@ class PointController extends Controller
     
         return redirect('/dashboard');
     }
+
+    public function edit(Request $request,$id)
+    {
+        $point = new Point();
+
+        $today = date('Y-m-d');
+
+        $user = Auth::user();
+
+        $points = DB::table('points')
+                        ->whereRaw("id = $id")
+                        ->get();
+
+        $point = Point::find($request->id);
+        return view('edit', [
+            'point' => $point, 
+            'points' => $points,
+            'id' => $id,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $point = Point::find($id);
+
+        $point->one   = $request->one;
+        $point->two   = $request->two;
+        $point->three = $request->three;
+        $point->four  = $request->four;
+        $point->memo  = $request->memo;
+
+        $point->save();
+
+        return redirect('/dashboard');
+    }
 }
