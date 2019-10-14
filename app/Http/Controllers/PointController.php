@@ -74,15 +74,6 @@ class PointController extends Controller
     public function post(Request $request)
     {
         $user = Auth::user();
-        // $validator = $request->validate ([
-        //     'memo' => 'max:255',
-        // ]);
-    
-        // if ($validator->fails()) {
-        //     return redirect('/')
-        //         ->withInput()
-        //         ->withErrors($validator);
-        // }
     
         $point = new Point();
     
