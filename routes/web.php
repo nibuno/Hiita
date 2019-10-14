@@ -14,6 +14,7 @@
 use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PointController;
 
 /**
  * TOPページ
@@ -42,13 +43,9 @@ Route::get('edit/{id}', 'PointController@edit');
 Route::post('/update/{point}', 'PointController@update');
 
 /**
- * 的中削除　TODO: Controllerへの移行
+ * 的中削除
  */
-Route::delete('/point/{point}', function (Point $point) {
-    $point->delete();
-
-    return redirect('/dashboard');
-});
+Route::delete('/point/{point}', 'PointController@destroy');
 
 
 Auth::routes();
