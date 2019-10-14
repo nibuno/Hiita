@@ -125,7 +125,7 @@ class PointController extends Controller
         return redirect('/dashboard');
     }
 
-    public function destroy(Request $request, Point $point)
+    public function destroy(Point $point)
     {
         $point->delete();
 
