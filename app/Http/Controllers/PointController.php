@@ -113,10 +113,8 @@ class PointController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Point $point)
     {
-        $point = Point::find($id);
-
         $point->one   = $request->one;
         $point->two   = $request->two;
         $point->three = $request->three;
