@@ -94,15 +94,12 @@ class PointController extends Controller
     {
         $point = new Point();
 
-        $today = date('Y-m-d');
-
-        $user = Auth::user();
-
         $points = DB::table('points')
                         ->whereRaw("id = $id")
                         ->get();
 
         $point = Point::find($request->id);
+        
         return view('edit', [
             'point' => $point, 
             'points' => $points,
