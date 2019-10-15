@@ -99,7 +99,13 @@ class PointController extends Controller
                         ->get();
 
         $point = Point::find($request->id);
-        
+
+        $userId = Auth::id();
+
+        if ($point->user_id != $userId) {
+            return redirect('/dashboard');
+        } 
+
         return view('edit', [
             'point' => $point, 
             'points' => $points,
