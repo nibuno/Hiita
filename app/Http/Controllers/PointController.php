@@ -90,6 +90,7 @@ class PointController extends Controller
         return redirect('/dashboard');
     }
 
+    // TODO: $points,$pointが重複しているためリファクタリング
     public function edit(Request $request,$id)
     {
         $point = new Point();

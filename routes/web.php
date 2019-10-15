@@ -35,6 +35,7 @@ Route::post('/point', 'PointController@post');
 /**
  * 的中編集画面
  */
+// TODO: edit/{point} に修正してリファクタリング
 Route::get('edit/{id}', 'PointController@edit');
 
 /**
