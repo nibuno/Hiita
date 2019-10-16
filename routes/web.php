@@ -24,30 +24,28 @@ Route::get('/', 'LandingController@index');
 /**
  * 的中表示
  */
-
 Route::get('/dashboard', 'PointController@index')->middleware('auth');
 
 /**
  * 的中追加
  */
-Route::post('/point', 'PointController@post');
+Route::post('/point', 'PointController@post')->middleware('auth');
 
 /**
  * 的中編集画面
  */
 // TODO: edit/{point} に修正してリファクタリング
-Route::get('edit/{id}', 'PointController@edit');
+Route::get('edit/{id}', 'PointController@edit')->middleware('auth');
 
 /**
  * 的中更新
  */
-Route::post('/update/{point}', 'PointController@update');
+Route::post('/update/{point}', 'PointController@update')->middleware('auth');
 
 /**
  * 的中削除
  */
-Route::delete('/point/{point}', 'PointController@destroy');
-
+Route::delete('/point/{point}', 'PointController@destroy')->middleware('auth');
 
 Auth::routes();
 
