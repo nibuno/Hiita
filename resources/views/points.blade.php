@@ -63,8 +63,7 @@
                                 {{ $yesterday }}
                             </div>
                             <div class="col-6 text-center">
-                                {{ $today }}
-                                今日の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
+                                {{ $today }}の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
                             </div>
                             <div class="col-3 text-left">
                                 {{ $tomorrow }}
@@ -139,7 +138,23 @@
                     </div>
                 </div>
             @else
-            <div>今日の記録は無いようです。弓を引いて的中を記録しましょう！</div>
+            <div class="card card-default">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-3 text-right">
+                                <a href="dashboard?Ymd={{ $yesterday }}">←昨日</a>
+                                {{ $yesterday }}
+                            </div>
+                            <div class="col-6 text-center">
+                                {{ $today }}の的中記録はありません。
+                            </div>
+                            <div class="col-3 text-left">
+                                {{ $tomorrow }}
+                                <a href="dashboard?Ymd={{ $tomorrow }}">明日→</a>
+                            </div>    
+                        </div>
+                        
+                    </div>
             @endif
         </div>
     </div>
