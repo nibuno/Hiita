@@ -3,19 +3,41 @@
 namespace App\Http\Controllers;
 
 use App\Point;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-
 class PointController extends Controller
 {
-    public function index() 
+    public function index(Request $request) 
     {
-        $today = date('Y-m-d');
+        // パラメータが無ければそのままログインした日を取得する
+        // あればそのパラメータにて行う
+
+        $requestYmd = $request->input('Ymd');
+
+        if (empty($requestYmd)) {
+            $today = Carbon::today()->format('Y-m-d');
+            $yesterday = Carbon::yesterday()->format('Y-m-d');
+            $tomorrow = Carbon::tomorrow()->format('Y-m-d');
+
+            $debug = 'true';
+        } else {
+            // TODO パラメータがあった場合の処理
+            $today = new Carbon($requestYmd);
+            $today = $requestYmd;
+            $yesterday = Carbon::yesterday()->format('Y-m-d');
+            $tomorrow = Carbon::tomorrow()->format('Y-m-d');
+
+            $debug = 'false';
+        }
 
         $user = Auth::user();
 
+        /**
+         * 的中の計算
+         */
         $points = DB::table('points')
                         ->orderBy('created_at', 'asc')
                         ->whereRaw("user_id = $user->id")
@@ -67,6 +89,9 @@ class PointController extends Controller
             'todayTotalPoints' => $todayTotalPoints,
             'todayShootsNumbers' => $todayShootsNumbers,
             'hitPointsPercentage' => $hitPointsPercentage,
+            'today' => $today,
+            'tomorrow' => $tomorrow,
+            'yesterday' => $yesterday,
             'user' => $user
         ]);
     }

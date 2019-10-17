@@ -56,8 +56,19 @@
             <!-- 現在の的中の表示 -->
             @if (count($points) > 0)
                 <div class="card card-default">
-                    <div class="card-header text-center">
-                        今日の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-3 text-right">
+                                <a href="">←昨日</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                今日の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
+                            </div>
+                            <div class="col-3 text-left">
+                                <a href="">明日→</a>
+                            </div>    
+                        </div>
+                        
                     </div>
                         
                     <div class="card-body table-responsive-sm">
