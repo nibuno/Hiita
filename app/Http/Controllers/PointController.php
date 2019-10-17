@@ -24,11 +24,10 @@ class PointController extends Controller
 
             $debug = 'true';
         } else {
-            // TODO パラメータがあった場合の処理
-            $today = new Carbon($requestYmd);
-            $today = $requestYmd;
-            $yesterday = Carbon::yesterday()->format('Y-m-d');
-            $tomorrow = Carbon::tomorrow()->format('Y-m-d');
+            $requestDay = new Carbon($requestYmd);
+            $today = $requestDay->format('Y-m-d');
+            $yesterday = $requestDay->subDay()->format('Y-m-d');
+            $tomorrow = $requestDay->addDay(2)->format('Y-m-d');
 
             $debug = 'false';
         }

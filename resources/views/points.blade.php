@@ -59,13 +59,16 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-3 text-right">
-                                <a href="">←昨日</a>
+                                <a href="dashboard?Ymd={{ $yesterday }}">←昨日</a>
+                                {{ $yesterday }}
                             </div>
                             <div class="col-6 text-center">
+                                {{ $today }}
                                 今日の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
                             </div>
                             <div class="col-3 text-left">
-                                <a href="">明日→</a>
+                                {{ $tomorrow }}
+                                <a href="dashboard?Ymd={{ $tomorrow }}">明日→</a>
                             </div>    
                         </div>
                         
