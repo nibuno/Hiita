@@ -15,6 +15,7 @@ use App\Point;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PointController;
+use App\Http\Controllers\CalendarController;
 
 /**
  * TOPページ
@@ -46,6 +47,11 @@ Route::post('/update/{point}', 'PointController@update')->middleware('auth');
  * 的中削除
  */
 Route::delete('/point/{point}', 'PointController@destroy')->middleware('auth');
+
+/**
+ * カレンダー
+ */
+Route::get('/calendar', 'CalendarController@index')->middleware('auth');
 
 Auth::routes();
 
