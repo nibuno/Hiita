@@ -105,7 +105,7 @@ class PointController extends Controller
 
         $point->save();
     
-        return redirect('/dashboard');
+        return redirect("/dashboard?Ymd=$request->today");
     }
 
     // TODO: $points,$pointが重複しているためリファクタリング
@@ -142,13 +142,13 @@ class PointController extends Controller
 
         $point->save();
 
-        return redirect('/dashboard');
+        return redirect("/dashboard?Ymd=$point->date");
     }
 
     public function destroy(Point $point)
     {
         $point->delete();
 
-        return redirect('/dashboard');
+        return redirect("/dashboard?Ymd=$point->date");
     }
 }
