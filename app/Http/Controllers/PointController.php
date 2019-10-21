@@ -101,14 +101,14 @@ class PointController extends Controller
     
         $point = new Point();
     
-        $point->memo  = $request->memo;
-        $point->one   = $request->one;
-        $point->two   = $request->two;
-        $point->three = $request->three;
-        $point->four  = $request->four;
-
+        $point->memo    = $request->memo;
+        $point->one     = $request->one;
+        $point->two     = $request->two;
+        $point->three   = $request->three;
+        $point->four    = $request->four;
         $point->user_id = $user->id;
-    
+        $point->date    = $request->today;
+
         $point->save();
     
         return redirect('/dashboard');
