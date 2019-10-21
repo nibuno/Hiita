@@ -46,6 +46,7 @@
                         <label for="points" class="control-label"></label>
                         <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-primary">
+                                <input type="hidden" name="today" value="{{ $today }}">
                                 <i class="fa fa-btn fa-plus"></i> 的中を記録する
                             </button>
                         </div>
