@@ -17,19 +17,15 @@ class PointController extends Controller
 
         $requestYmd = $request->input('Ymd');
 
-        if (empty($requestYmd)) {
+        if (!$request->has('Ymd')) {
             $today = Carbon::today()->format('Y-m-d');
             $yesterday = Carbon::yesterday()->format('Y-m-d');
             $tomorrow = Carbon::tomorrow()->format('Y-m-d');
-
-            $debug = 'true';
         } else {
             $requestDay = new Carbon($requestYmd);
             $today = $requestDay->format('Y-m-d');
             $yesterday = $requestDay->subDay()->format('Y-m-d');
             $tomorrow = $requestDay->addDay(2)->format('Y-m-d');
-
-            $debug = 'false';
         }
 
         $user = Auth::user();
