@@ -40,40 +40,34 @@ class PointController extends Controller
         $points = DB::table('points')
                         ->orderBy('created_at', 'asc')
                         ->whereRaw("user_id = $user->id")
-                        ->whereDate('created_at', '=', "$today")
-                        ->whereDate('updated_at', '=', "$today")
+                        ->whereDate('date', '=', "$today")
                         ->get();
 
         $totalPointsOfOne = DB::table('points')
                                 ->whereRaw("user_id = $user->id")
-                                ->whereDate('created_at', '=', "$today")
-                                ->whereDate('updated_at', '=', "$today")
+                                ->whereDate('date', '=', "$today")
                                 ->sum('one');
 
         $totalPointsOfTwo = DB::table('points')
                                 ->whereRaw("user_id = $user->id")
-                                ->whereDate('created_at', '=', "$today")
-                                ->whereDate('updated_at', '=', "$today")
+                                ->whereDate('date', '=', "$today")
                                 ->sum('two');
 
         $totalPointsOfThree = DB::table('points')
                                 ->whereRaw("user_id = $user->id")
-                                ->whereDate('created_at', '=', "$today")
-                                ->whereDate('updated_at', '=', "$today")
+                                ->whereDate('date', '=', "$today")
                                 ->sum('three');
         
         $totalPointsOfFour = DB::table('points')
                                 ->whereRaw("user_id = $user->id")
-                                ->whereDate('created_at', '=', "$today")
-                                ->whereDate('updated_at', '=', "$today")
+                                ->whereDate('date', '=', "$today")
                                 ->sum('four');
 
         $todayTotalPoints = $totalPointsOfOne + $totalPointsOfTwo + $totalPointsOfThree + $totalPointsOfFour;
 
         $todayShootsNumbers = DB::table('points')
                                 ->whereRaw("user_id = $user->id")
-                                ->whereDate('created_at', '=', "$today")
-                                ->whereDate('updated_at', '=', "$today")
+                                ->whereDate('date', '=', "$today")
                                 ->count() * 4;
 
         // 練習していない場合 Division by zero Error が起こるので回避するため
