@@ -30,10 +30,18 @@
                 <!-- 今月 -->
                 @foreach ($days as $key => $value)
                     @if ($value == 7)
-                        <td  class="bg-white">{{ $key + 1 }}</td>
+                        <td  class="bg-white">
+                            <a href="/dashboard?Ymd={{ $year }}-{{ $month }}-{{ $key + 1 }}">
+                                {{ $key + 1 }}
+                            </a>
+                        </td>
                         </tr>
                     @else
-                        <td  class="bg-white">{{ $key + 1 }}</td>
+                        <td  class="bg-white">
+                            <a href="/dashboard?Ymd={{ $year }}-{{ $month }}-{{ $key + 1 }}">
+                                {{ $key + 1 }}
+                            </a>
+                        </td>
                     @endif
                 @endforeach
 
