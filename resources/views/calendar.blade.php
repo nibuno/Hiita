@@ -10,32 +10,42 @@
         <thead>
         <tr>
             @foreach ($weeks as $jaDayOfWeek => $enDayOfWeek)
-            <th class="{{ $enDayOfWeek }} text-center">{{ $jaDayOfWeek }}</th>
+            <th class="{{ $enDayOfWeek }} text-center bg-white">{{ $jaDayOfWeek }}</th>
             @endforeach
         </tr>
         </thead>
+        <div class="row text-center">
+            <a class="col" href="?Ym={{ $lastYearMonth }} ">前月へ</a>
+            <a class="col" href="calendar">今月</a>
+            <a class="col" href="?Ym={{ $nextYearMonth }} ">次月へ</a>
+        </div>
+            
         <tbody>
-        @foreach ($dates as $date)
-            @if ($date->dayOfWeek == 0)
-                <tr>
-            @endif
-                <td
-                    @if ($date->year != $currentYear || $date->month != $currentMonth)
-                        class="bg-secondary"
-                    
-                    @elseif ($date->year == $currentYear && $date->month == $currentMonth && $date->day == $currentDay)
-                        class="bg-primary"
-                    
+            <tr>
+                <!-- 先月の部分 -->
+                @foreach ($lastMonthDays as $value)
+                <td class="bg-white"></td>
+                @endforeach
+
+                <!-- 今月 -->
+                @foreach ($days as $key => $value)
+                    @if ($value == 7)
+                        <td  class="bg-white">{{ $key + 1 }}</td>
+                        </tr>
+                    @else
+                        <td  class="bg-white">{{ $key + 1 }}</td>
                     @endif
-                >
-                {{ $date->day }}
-                </td>
-            @if ($date->dayOfWeek == 6)
-                </tr>
-            @endif
-        @endforeach
+                @endforeach
+
+                <!-- 次月 -->
+                @for ($i = 0; $i < $nextMonthDays; $i++)
+                <td  class="bg-white"></td>
+                @endfor
+
+            </tr>
         </tbody>
     </table>
+ 
 </div>
 
 @endsection
