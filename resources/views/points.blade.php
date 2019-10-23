@@ -47,7 +47,7 @@
                         <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-primary">
                                 <input type="hidden" name="today" value="{{ $today }}">
-                                <i class="fa fa-btn fa-plus"></i> 的中を記録する
+                                <i class="fa fa-btn fa-plus"></i> 記録
                             </button>
                         </div>
                     </form>
@@ -60,21 +60,27 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-3 text-right">
-                                <a href="dashboard?Ymd={{ $yesterday }}">←昨日</a>
-                                {{ $yesterday }}
+                                <a href="dashboard?Ymd={{ $yesterday }}">
+                                    <i class="fa fa-btn fa-arrow-left"></i>
+                                        前日
+                                    </i>
+                                </a>
                             </div>
                             <div class="col-6 text-center">
-                                {{ $today }}の的中記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
+                                {{ $today }}の記録: {{ $todayShootsNumbers }}射 {{ $todayTotalPoints }}中 {{ $hitPointsPercentage }}%
                             </div>
                             <div class="col-3 text-left">
-                                {{ $tomorrow }}
-                                <a href="dashboard?Ymd={{ $tomorrow }}">明日→</a>
+                                <a href="dashboard?Ymd={{ $tomorrow }}">
+                                    翌日
+                                    <i class="fa fa-btn fa-arrow-right">
+                                    </i>
+                                </a>
                             </div>    
                         </div>
                         
                     </div>
                         
-                    <div class="card-body table-responsive-sm">
+                    <div class="card-body">
                         <div class="table-responsive-sm">
                             <table class="table table-striped table-sm text-center text-nowrap">
                                 <!-- テーブル本体 -->
@@ -117,7 +123,9 @@
                                             </td>
                                             <td>
                                                 <a class="btn btn-primary" href="{{ url('edit/' . $point->id) }}"> 
-                                                    編集
+                                                    <i class="fa fa-btn fa-edit"></i>
+                                                        編集
+                                                    </i>
                                                 </a>
                                             </td>
                                             <td>
@@ -143,16 +151,22 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-3 text-right">
-                                <a href="dashboard?Ymd={{ $yesterday }}">←昨日</a>
-                                {{ $yesterday }}
+                                <a href="dashboard?Ymd={{ $yesterday }}">
+                                    <i class="fa fa-btn fa-arrow-left"></i>
+                                        前日
+                                    </i>
+                                </a>
                             </div>
                             <div class="col-6 text-center">
-                                {{ $today }}の的中記録はありません。
+                                {{ $today }}の記録はありません。
                             </div>
                             <div class="col-3 text-left">
-                                {{ $tomorrow }}
-                                <a href="dashboard?Ymd={{ $tomorrow }}">明日→</a>
-                            </div>    
+                                <a href="dashboard?Ymd={{ $tomorrow }}">
+                                    翌日
+                                    <i class="fa fa-btn fa-arrow-right">
+                                    </i>
+                                </a>
+                            </div>   
                         </div>
                         
                     </div>

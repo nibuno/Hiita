@@ -66,7 +66,7 @@
                         <label for="points" class="control-label"></label>
                         <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-btn fa-plus"></i> 的中を更新する
+                                <i class="fa fa-btn fa-plus"></i> 更新
                             </button>
                         </div>
                     </form>
