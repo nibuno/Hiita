@@ -2,19 +2,19 @@
 
 @section('content')
     <div class="container">
-        <div class="col-sm-offset-2">
+        <div class="">
             <div class="card card-default">
                 <div class="card-body">
                     <!-- バリデーションエラーの表示 -->
                     @include('common.errors')
 
                     <!-- 的中登録フォーム -->
-                    <form action="{{ url('point')}}" method="POST" class="form-horizontal">
+                    <form action="{{ url('point')}}" method="POST" class="form-horizontal row">
                         @csrf
 
                         <!-- 的中の記録 -->
-                        <div class="form-check">
-                            <div class="col-sm-6">
+                        <div class="col-lg-4 d-flex align-items-end">
+                            <div class="form-check">
                                 <label class="checkbox-inline">
                                     <input type="hidden" name="one" value="0">
                                     <input type="checkbox" name="one" value="1">1射目
@@ -35,21 +35,21 @@
                         </div>
 
                         <!-- メモ -->
-                        <div class="group">
-                            <div class="col-sm-6">
+                        <div class="col-lg-4">
+                            <div class="group">
                                 <input type="text" id="memo" name="memo" class="form-control" 
                                 placeholder="気になったことなどメモしよう" value="{{ old('memo') }}">
                             </div>
                         </div>
 
                         <!-- 的中記録送信ボタン -->
-                        <label for="points" class="control-label"></label>
-                        <div class="col-sm-offset-3 col-sm-6">
-                            <button type="submit" class="btn btn-primary">
-                                <input type="hidden" name="today" value="{{ $today }}">
-                                <i class="fa fa-btn fa-plus"></i> 記録
-                            </button>
-                        </div>
+                        <div class="col-lg-4 d-flex align-items-end">
+                            <label for="points" class="control-label"></label>
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <input type="hidden" name="today" value="{{ $today }}">
+                                    <i class="fa fa-btn fa-plus"></i> 記録
+                                </button>
+                        </div>                        
                     </form>
                 </div>
             </div>
