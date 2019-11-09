@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Point;
 
 class CalendarController extends Controller
 {
@@ -72,9 +75,37 @@ class CalendarController extends Controller
 
         // 次月の表示日数の取得
         $nextMonthDays = '';
-        if ($weekNumber != 7) {
+        if ($weekNumber != 8) {
             $nextMonthDays = 8 - $weekNumber;
         }
+
+        $user = Auth::user();
+
+        // ここで日付を指定することで希望のデータを取得できるはず
+        $pointsMyDates = DB::table('points')
+        ->whereRaw("user_id = $user->id")
+        ->whereYear('date', '=', "$year")
+        ->whereMonth('date', '=', "$month")
+        ->orderBy('date')
+        ->get();
+
+        $myDates = [];
+        foreach ($pointsMyDates as $value) {
+            array_push($myDates, $value->date);
+        }
+
+        $practiceDays = [];
+
+        foreach ($myDates as $value) {
+            $practiceDay = new Carbon($value);
+            $practiceDays[] = $practiceDay->format('d');
+        }
+
+        $practiceDays = array_unique($practiceDays);
+
+
+
+        $myDates = array_unique($myDates);
 
         $weeks = [
             '月' => 'monday',
@@ -103,6 +134,8 @@ class CalendarController extends Controller
             'currentMonthDays' => $currentMonthDays,
             'currentDay' => $currentDay,
             'weeks' => $weeks,
+            'myDates' => $myDates,
+            'practiceDays' => $practiceDays,
         ]);
     }
 }
