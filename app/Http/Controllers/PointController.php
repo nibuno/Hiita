@@ -81,7 +81,6 @@ class PointController extends Controller
             'today' => $today,
             'tomorrow' => $tomorrow,
             'yesterday' => $yesterday,
-            'user' => $user
         ]);
     }
 
