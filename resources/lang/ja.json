@@ -5,5 +5,6 @@
   "E-Mail Address" : "メールアドレス",
   "Password" : "パスワード",
   "Remember Me" : "ログイン状態を保存する",
-  "Name" : "ユーザー名"
+  "Name" : "ユーザー名",
+  "Logout" : "ログアウト"
 }
