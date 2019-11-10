@@ -86,6 +86,10 @@ class PointController extends Controller
 
     public function post(Request $request)
     {
+        $request->validate([
+            'memo' => 'max:100',
+        ]);
+
         $user = Auth::user();
     
         $point = new Point();
@@ -106,6 +110,10 @@ class PointController extends Controller
     // TODO: $points,$pointが重複しているためリファクタリング
     public function edit(Request $request,$id)
     {
+        $request->validate([
+            'memo' => 'max:100',
+        ]);
+
         $point = new Point();
 
         $points = DB::table('points')
@@ -129,6 +137,10 @@ class PointController extends Controller
 
     public function update(Request $request, Point $point)
     {
+        $request->validate([
+            'memo' => 'max:100',
+        ]);
+        
         $point->one   = $request->one;
         $point->two   = $request->two;
         $point->three = $request->three;
