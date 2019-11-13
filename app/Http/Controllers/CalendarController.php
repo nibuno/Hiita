@@ -25,59 +25,16 @@ class CalendarController extends Controller
         // 月の初日を取得
         // '2019-10'にはYmがあればYmを なければ当日の日を入れる
 
-        if ($request->has('Ym')) {
-            $requestDay = new Carbon($requestYm);
-            $year = $requestDay->format('Y');
-            $month = $requestDay->format('m');
-            $day = $requestDay->format('d');
-            $yearMonth = $requestDay->format('Y-m');
-            $currentMonthDays = $requestDay->daysInMonth;
+        $targetDate = $request->has('Ym') && $requestYm ? new Carbon($requestYm) : Carbon::today();
 
-            // 月の初日を取得
-            // '2019-10'にはYmがあればYmを なければ当日の日を入れる
-            $firstDayOfMonth = $requestDay->format('N');
-            $daysInMonth = $requestDay->daysInMonth;
-
-            $lastYearMonth = $requestDay->subMonth(1)->format('Y-m');
-            $nextYearMonth = $requestDay->addMonth(2)->format('Y-m');
-        } else {
-            $year = Carbon::today()->format('Y');
-            $month = Carbon::today()->format('m');
-            $day = Carbon::today()->format('d');
-            $yearMonth = Carbon::today()->format('Ym');
-            $firstDayOfMonth = $currentDays->format('N');
-            $currentMonthDays = $currentDays->daysInMonth;
-
-            $lastYearMonth = $currentDays->subMonth(1)->format('Y-m');
-            $nextYearMonth = $currentDays->addMonth(2)->format('Y-m');
-        }
-
-        // 前月の表示日数の取得
-        $lastMonthDays = [];
-        $i = 1;
-        if ($firstDayOfMonth != 1) {
-            for ($i = 1; $i < $firstDayOfMonth; $i++) {
-                $lastMonthDays[] = $i;
-            }
-        }
-        $weekNumber = $i;
-
-        // 今月の表示日数の取得
-        $days = [];
-        for ($i = 1; $i <= $currentMonthDays; $i++) {
-            // 日曜日を超えたらリセットする
-            if ($weekNumber == 8) {
-                $weekNumber = 1;
-            }
-            array_push($days, $weekNumber);
-            $weekNumber++;
-        }
-
-        // 次月の表示日数の取得
-        $nextMonthDays = '';
-        if ($weekNumber != 8) {
-            $nextMonthDays = 8 - $weekNumber;
-        }
+        $year = $targetDate->format('Y');
+        $month = $targetDate->format('m');
+        $day = $targetDate->format('d');
+        $yearMonth = $targetDate->format('Y-m');
+        $currentMonthDays = $targetDate->daysInMonth;
+        $firstDayOfMonth = $targetDate->format('N');
+        $lastYearMonth = $targetDate->subMonth(1)->format('Y-m');
+        $nextYearMonth = $targetDate->addMonth(2)->format('Y-m');
 
         $user = Auth::user();
 
@@ -103,9 +60,37 @@ class CalendarController extends Controller
 
         $practiceDays = array_unique($practiceDays);
 
-
-
         $myDates = array_unique($myDates);
+
+         // 前月の表示日数の取得
+         $lastMonthDays = [];
+         $i = 1;
+         if ($firstDayOfMonth != 1) {
+             for ($i = 1; $i < $firstDayOfMonth; $i++) {
+                 $lastMonthDays[] = $i;
+             }
+         }
+         $weekNumber = $i;
+ 
+         // 今月の表示日数の取得
+         $days = [];
+         for ($i = 1; $i <= $currentMonthDays; $i++) {
+             // 日曜日を超えたらリセットする
+             if ($weekNumber == 8) {
+                 $weekNumber = 1;
+             }
+ 
+             // 練習しているかどうかの日付のチェックを行う
+ 
+             array_push($days, $weekNumber);
+             $weekNumber++;
+         }
+         
+         // 次月の表示日数の取得
+         $nextMonthDays = '';
+         if ($weekNumber != 8) {
+             $nextMonthDays = 8 - $weekNumber;
+         }
 
         $weeks = [
             '月' => 'monday',
@@ -118,7 +103,6 @@ class CalendarController extends Controller
           ];
 
         return view('calendar', [
-            'daysInMonth' => $daysInMonth,
             'firstDayOfMonth' => $firstDayOfMonth,
             'lastYearMonth' => $lastYearMonth,
             'lastMonthDays' => $lastMonthDays,
