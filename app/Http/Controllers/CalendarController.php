@@ -52,7 +52,6 @@ class CalendarController extends Controller
         }
 
         $practiceDays = [];
-
         foreach ($myDates as $value) {
             $practiceDay = new Carbon($value);
             $practiceDays[] = $practiceDay->format('d');
@@ -74,16 +73,31 @@ class CalendarController extends Controller
  
          // 今月の表示日数の取得
          $days = [];
+         $template = [];
          for ($i = 1; $i <= $currentMonthDays; $i++) {
-             // 日曜日を超えたらリセットする
-             if ($weekNumber == 8) {
-                 $weekNumber = 1;
-             }
+
+            // 日曜日を超えてしまった場合月曜日にする
+            if ($weekNumber == 8) {
+                $weekNumber = 1;
+            }
  
-             // 練習しているかどうかの日付のチェックを行う
- 
-             array_push($days, $weekNumber);
-             $weekNumber++;
+            // 練習しているかどうかの日付のチェックを行う
+            $day = $i;
+            $firstValue = reset($practiceDays);
+
+            if ($firstValue == $day) {
+                $template[] = '<td class="bg-primary text-center">' . "<a class>$day</a></td>";
+                array_shift($practiceDays);
+            } else {
+                $template[] = '<td class="bg-white text-center">' . "<a>$day</a></td>";
+            }
+
+            if ($weekNumber == 7) {
+                $template[] = "</tr>";
+            }
+            
+            array_push($days, $weekNumber);
+            $weekNumber++;
          }
          
          // 次月の表示日数の取得
@@ -101,6 +115,8 @@ class CalendarController extends Controller
             '土' => 'saturday',
             '日' => 'sunday',
           ];
+
+          $test = "<p>文字が出ない</p>";
 
         return view('calendar', [
             'firstDayOfMonth' => $firstDayOfMonth,
@@ -120,6 +136,8 @@ class CalendarController extends Controller
             'weeks' => $weeks,
             'myDates' => $myDates,
             'practiceDays' => $practiceDays,
+            'template' => $template,
+            'test' => $test,
         ]);
     }
 }

@@ -28,34 +28,8 @@
                 @endforeach
 
                 <!-- 今月 -->
-                @foreach ($days as $key => $value)
-                    
-                    @if ($value == 7)
-                        <!-- TODO:$keyと練習した日が一緒なら色を変える -->
-                        <td  class="bg-white text-center">
-                            <a href="/dashboard?Ymd={{ $year }}-{{ $month }}-{{ $key + 1 }}">
-                                {{ $key + 1 }}
-                            </a>
-
-                            <div class="small">
-                                <!-- TODO:矢数 -->
-                                <br>
-                                <!-- TODO:的中数 -->
-                            </div>
-                        </td>
-                        </tr>
-                    @else
-                        <td  class="bg-white text-center">
-                            <a href="/dashboard?Ymd={{ $year }}-{{ $month }}-{{ $key + 1 }}">
-                                {{ $key + 1 }}
-                            </a>
-                            <div class="small">
-                                <!-- TODO:矢数 -->
-                                <br>
-                                <!-- TODO:的中数 -->
-                            </div>
-                        </td>
-                    @endif
+                @foreach ($template as $key)
+                    {!! $key !!}
                 @endforeach
 
                 <!-- 次月 -->
