@@ -85,11 +85,14 @@ class CalendarController extends Controller
             $day = $i;
             $firstValue = reset($practiceDays);
 
+            $hrefClass = 'href="dashboard?Ymd=' . $year. '-' . $month . '-' . $day . '"';
+            $textWhiteClass = 'class="text-white"';
+
             if ($firstValue == $day) {
-                $template[] = '<td class="bg-primary text-center">' . "<a class>$day</a></td>";
+                $template[] = '<td class="bg-info text-center">' . "<a $hrefClass $textWhiteClass >$day</a></td>";
                 array_shift($practiceDays);
             } else {
-                $template[] = '<td class="bg-white text-center">' . "<a>$day</a></td>";
+                $template[] = '<td class="bg-white text-center">' . "<a $hrefClass>$day</a></td>";
             }
 
             if ($weekNumber == 7) {
