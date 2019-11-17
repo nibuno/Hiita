@@ -18,6 +18,20 @@
             <div class="text-center">
                 <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('Register') }}</a>
             </div>
+            <div class="text-center mt-4">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+
+                <input type="hidden" name="email" value="test@test.co.jp">
+                <input type="hidden" name="password" value="testtest">
+
+                <p>採用担当者様向けのテストユーザーはこちら</p>
+                <button type="submit" class="btn btn-primary">
+                    テストログイン
+                </button>
+
+            </form>
+            </div>
         </div>
     </div>
 @endsection
