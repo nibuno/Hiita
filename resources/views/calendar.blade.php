@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="text-center">
-        {{ $year }} / {{ $month }}
+        {{ $nowYear }} / {{ $nowMonth }}
     </div>
     <table class="table table-bordered table-sm">
         <thead>
@@ -15,9 +15,9 @@
         </tr>
         </thead>
         <div class="row text-center">
-            <a class="col" href="?Ym={{ $lastYearMonth }} ">前月</a>
+            <a class="col" href="?Ym={{ $lastMonth }} ">前月</a>
             <a class="col" href="calendar">今月</a>
-            <a class="col" href="?Ym={{ $nextYearMonth }} ">次月</a>
+            <a class="col" href="?Ym={{ $nextMonth }} ">次月</a>
         </div>
             
         <tbody>
@@ -28,7 +28,7 @@
                 @endforeach
 
                 <!-- 今月 -->
-                @foreach ($template as $key)
+                @foreach ($thisMonthTemplate as $key)
                     {!! $key !!}
                 @endforeach
 
