@@ -25,7 +25,7 @@
                 <input type="hidden" name="email" value="test@test.co.jp">
                 <input type="hidden" name="password" value="testtest">
 
-                <p>採用担当者様向けのテストユーザーはこちら</p>
+                <p>テストユーザーはこちら</p>
                 <button type="submit" class="btn btn-primary">
                     テストログイン
                 </button>
